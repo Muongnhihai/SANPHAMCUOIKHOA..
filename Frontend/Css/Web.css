@@ -1,0 +1,201 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+.chinh {
+   display: flex;
+   min-height: 100vh;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   background:#FEFEFE;
+   border: #b6d0ff;
+   overflow: hidden;
+}
+.noidung {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 20px;
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+.haha{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 50%;
+    padding: 20px;
+    left: 5%;
+    right: 10%;
+    background-color: #ffffff;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    z-index: 2;
+}
+.chinh::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+
+    background-image:
+        url("../Image/Nen.png");
+
+    background-repeat:no-repeat;
+
+    background-position:
+        left 0px top -100px;
+
+    background-size:
+        50% 130%;
+
+    opacity: 0.9;
+    z-index: 0;
+}
+.logo,
+.mot,
+.hai,
+.mot {
+    margin: 0;
+    color: #FAFAF8;
+    padding: 0 40px ;
+    font-size: 100px;}
+.hai {
+    margin: 0;
+    color:#FAFAF8;
+    padding:0 40px ;
+    font-size: 30px;
+}
+/* .logo {
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+    position: top 40px ;
+    margin: 20px auto;
+} */
+
+.dangnhap {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    margin: 20px auto;
+    border-radius: 30px;
+    width: 50%;
+    z-index : 2,
+}
+.tren {
+    color: #000000;
+    font-size: 20px;
+    display: flex;
+    flex-direction: center;
+    margin: 20px;
+}
+body {
+  background: #f0f2f5;
+  font-family: Arial, sans-serif;
+}
+
+
+.input-box {
+  position: relative;
+  width: 90%;
+  margin: 20px;
+}
+
+.input-box input {
+  width: 95%;
+  padding: 14px 14px;
+  border: 1.5px solid #ccd0d5;
+  border-radius: 12px;
+  font-size: 17px;
+  outline: none;
+  background: white;
+  transition: 0.2s;
+}
+
+.input-box label {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #65676b;
+  font-size: 17px;
+  background: white;
+  padding: 0 4px;
+  pointer-events: none;
+  transition: 0.2s;
+}
+
+.input-box input:focus {
+  border-color: #3F7D62;
+  box-shadow: 0 0 0 2px #e7f3ff;
+}
+
+.input-box input:focus + label,
+.input-box input:valid + label {
+  top: -8px;
+  font-size: 13px;
+  color: #3F7D62;
+}
+
+.input-box input:valid + label {
+  color: #3F7D62;
+}
+.nut {
+  width: 94%;
+  padding: 16px;
+  border: none;
+  margin:  10px 20px 10px 20px;
+  border-radius: 10px;
+  background: #6fc2a9;
+  color:#ffffff;
+  font-size: 17px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.mot::after::after {
+    width: 80%;
+    height: 20px;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    filter: blur(7px);
+}
+.nut:hover {
+  background-color: #3F7D62;
+}
+.tao {
+  width: 94%;
+  padding: 14px;
+  border: none;
+  margin: 0px 20px 30px 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #4E9575;
+  font-size: 17px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: 1.5px solid #4E9575;
+}
+.quen { 
+  color: #000000;
+  text-decoration: none;
+  font-size: 14px;
+  flex-direction: center;
+  margin : 0 auto ;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  align-items: center;
+  
+}
