@@ -4,8 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel ="stylesheet" href="./Frontend/Css/Main.css">
+    
 </head>
 <body>
-    
+    <div class="container">
+        <div class="bar">
+            <div class="mucluc">
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-btn">✦</label>
+            <div class="menu-content">
+                <button class="Chon" onclick="window.location.href='index.html'">☾ Trang chủ</button>
+                <button class="Chon">✎ Artist</button> 
+                <button class="Chon"> ♡Tri ân</button>
+            </div>
+            </div>
+            <button class="hehe" onclick="window.location.href='index.html'">Hehe Gallery</button>
+            <input type="text" placeholder="Tìm kiếm..." class="search-bar">
+            <p class="ii"></p>
+            <button class="nut" id="dangnhapBtn" onclick="window.location.href='./Frontend/Html/Web.html'">Đăng nhập</button>
+            <button class="nut" id="dangkyBtn" onclick="window.location.href='./Frontend/Html/Dangky.html'">Đăng ký</button>
+            <button class="logo" id="profileBtn" onclick="window.location.href='./Frontend/Html/Profile.html'">Profile</button>
+        </div>
+        <div class="art-gallery" id="artGallery"></div>
+       
+        <div id="artLightbox" class="art-lightbox">
+            <button id="closeLightbox" class="lightbox-close" aria-label="Đóng">&times;</button>
+            <img id="lightboxImage" src="" alt="Tranh phóng to">
+            <p id="lightboxAuthor"></p>
+        </div>
+        </div>
+        <div>
+            
+        </div>
+    </div>
+     </div>
+            <script src="./Frontend/Java/Main.js"></script>
+    </div>
 </body>
 </html>

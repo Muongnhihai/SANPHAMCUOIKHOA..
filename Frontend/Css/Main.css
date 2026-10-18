@@ -1,0 +1,203 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+}
+.bar{
+    background-color: #4a9886;
+    padding: 20px;
+    width: 100%; 
+    height: 7%;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    position: fixed;
+    z-index: 1;
+    border:1px solid #397636;
+
+}
+.hehe{
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4a9886;
+    border:none
+}
+.ii{
+    width: 10%;
+    font-weight: bold;
+    color: #fff;
+}
+.nut{
+    background-color: #fff;
+    color: #4a9886;
+    border: none;
+    padding: 10px 20px;
+    width:12%;
+    margin-right: 10px;
+    cursor: pointer;
+    min-width: 20px;
+}
+.logo{
+    width: 5%;
+    height: 100%;
+    font-weight: bold;
+    color: #000000;
+    margin-right: 10px;
+}
+.nut:hover{
+    background-color: #e8ecec;
+}
+.search-bar{
+    padding: 10px;
+    width: 30%;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Phần mục lục */
+.mucluc{
+    background: #4a9886;
+    padding:0px;
+    margin-left: 20px;
+    font-size: 40px;
+}
+
+#menu-toggle{
+    display: none;
+
+}
+
+.menu-btn{
+    background: #4a9886;
+    color: white;
+    cursor: pointer;
+
+}
+
+.menu-content{
+    display: flex; 
+    position: fixed;
+    top: 12%;
+    flex-direction: column ;
+    align-items: start;
+    gap: 20px;
+    width: 10%;
+    height: 100vh;
+    left:0;
+    background: #4a9886;
+    max-height: 0vh;
+    overflow: hidden;
+    transition: 0.5s;
+    z-index: 0;
+
+}
+
+
+#menu-toggle:checked ~ .menu-content{
+    max-height: 1000px;
+}
+
+
+.menu-content ul{
+    list-style: none;
+    margin: 0;
+    padding: 20px;
+}
+
+.menu-content li{
+    padding: 10px 0;
+}
+.Chon{
+    background: #4a9886;
+    color: white;
+    border: none;
+    padding: 20px 20px;
+    cursor: pointer;
+    font-size: 20px;
+    white-space: nowrap;
+}
+.Chon:hover {
+  color: #d3d1d1;
+}
+.art-gallery {
+    columns: 4 220px;
+    column-gap: 16px;
+    margin-top: 6%;
+}
+.art-card {
+    break-inside: avoid;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.art-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.art-card p {
+    margin: 8px 10px 12px;
+    overflow-wrap: anywhere;
+}
+.art-card:hover {
+    transform: scale(1.02);
+    position: relative;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+}
+
+.art-card:hover .art-author {
+    font-size: 21px;
+    font-weight: 700;
+}
+.art-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.92);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px 24px 24px;
+    box-sizing: border-box;
+}
+
+.art-lightbox.active {
+    display: flex;
+}
+
+.art-lightbox img {
+    max-width: 95vw;
+    max-height: 82vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.art-lightbox p {
+    color: white;
+    font-size: 20px;
+    margin: 16px 0 0;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 12px;
+    right: 24px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 42px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.lightbox-close:hover {
+    color: #8ee0cf;
+}
+

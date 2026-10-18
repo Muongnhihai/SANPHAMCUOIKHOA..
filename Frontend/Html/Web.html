@@ -26,41 +26,15 @@
                     <input type="password" required id="pass">
                     <label>Mật khẩu</label>
                 </div>
-                <input type="button" class="nut" value="Đăng nhập" onclick="myFunction()">
+                <input type="button" class="nut" value="Đăng nhập" onclick="Dangnhap()">
                 <hr>
                 <button class="tao" onclick="SignIn()">Đăng ký</button>
-                <a href="#" class="quen">Quên Smật khẩu?</a>
+                <a href="#" class="quen">Quên Mật khẩu?</a>
+                <p id="message">Hiện thông báo</p>
             </div>
         </div>
     </div>
     <script>
-       function myFunction() {
-    const email = document.getElementById("email").value;
-    const pass = document.getElementById("pass").value;
-
-    fetch("http://localhost:3000/api/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            email: email,
-            password: pass
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert("Đăng nhập thành công!");
-            window.location.href = "../Sản Phẩm cuối khóa/index.html";
-        } else {
-            alert(data.message);
-        }
-    })
-    .catch(error => {
-        console.error("Lỗi:", error);
-    });
-}
     </script>
 </body>
 </html>

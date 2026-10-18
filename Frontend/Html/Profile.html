@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Hehe Art</title>
+    <link rel="stylesheet" href="../Css/Profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <span>Hehe</span>
+            <small>Art</small>
+        </div>
+        <nav>
+            <a href="../../index.html">Trang chủ</a>
+            <a href="#" class="active">Profile</a>
+            <button class="upload-top" onclick="goToUpload()">+ Đăng tranh</button>
+            <div class="mini-avatar" id="miniAvatar">H</div>
+        </nav>
+    </header>
+    <main class="profile-container">
+        <section class="profile-card">
+            <div class="avatar-wrapper">
+                <div class="avatar" id="avatar">H</div>
+                <button class="avatar-edit">✎</button>
+            </div>
+            <div class="user-info">
+                <h1 id="username">hehe</h1>
+                <p class="nickname" id="nickname">@hehe</p>
+                <p class="bio">Vẽ những thứ mình thích ♡</p>
+            </div>
+            <div class="profile-actions">
+                <button class="edit-profile">Chỉnh sửa hồ sơ</button>
+                <button class="upload-button" onclick="goToUpload()"><span>＋</span>Đăng tranh</button>
+            </div>
+            <div class="stats">
+
+                <div class="stat">
+                    <strong id="postCount">0</strong>
+                    <span>Bài đăng</span>
+                </div>
+
+                <div class="stat">
+                    <strong>0</strong>
+                    <span>Lượt thích</span>
+                </div>
+                <div class="stat">
+                    <strong>0</strong>
+                    <span>Người theo dõi</span>
+                </div>
+            </div>
+        </section>
+        <section class="posts-section">
+
+            <div class="section-title">
+                <div>
+                    <span class="small-title">GALLERY</span>
+                    <h2>Bài đăng của bạn</h2>
+                </div>
+
+                <button class="sort-button">
+                    Mới nhất ↓
+                </button>
+            </div>
+
+
+            <div class="post-grid" id="postGrid">
+
+                <!-- DEMO POST -->
+
+                <article class="post-card">
+
+                    <div class="image-container">
+                        <img src="../Images/demo1.jpg" alt="Artwork">
+
+                        <div class="image-overlay">
+                            <span>♡ 12</span>
+                        </div>
+                    </div>
+
+                    <div class="post-info">
+                        <h3>Một ngày bình yên</h3>
+                        <p>20 tháng 9, 2026</p>
+                    </div>
+
+                </article>
+
+
+                <article class="post-card">
+
+                    <div class="image-container">
+                        <img src="../Images/demo2.jpg" alt="Artwork">
+
+                        <div class="image-overlay">
+                            <span>♡ 8</span>
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <h3>Summer morning</h3>
+                        <p>18 tháng 9, 2026</p>
+                    </div>
+                </article>
+                <article class="post-card">
+                    <div class="image-container">
+                        <img src="../Images/demo3.jpg" alt="Artwork">
+                        <div class="image-overlay">
+                            <span> 21</span>
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <h3>Dream</h3>
+                        <p>15 tháng 9, 2026</p> 
+                    </div>
+            </article>
+            </div>
+            <div class="empty-post" id="emptyPost">
+                <div class="empty-icon">✦</div>
+                <h3>Chưa có bài đăng</h3>
+                <p> Hãy đăng tác phẩm đầu tiên của bạn.</p>
+                <button onclick="goToUpload()"> ＋ Đăng tranh</button>
+            </div>
+            
+        </section>
+    </main>
+    <script src="../Java/Profile.js"></script>
+</body>
+</html>

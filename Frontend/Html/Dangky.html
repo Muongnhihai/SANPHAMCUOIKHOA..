@@ -26,38 +26,16 @@
             <input type="password" required id="pass">
             <label>Mật khẩu</label>
             </div>
-            <input type="button" class="nut" value="Đăng nhập" onclick="myFunction()">
+            <input type="button" class="nut" value="Đăng ký" onclick="Dangky()">
             <hr>
             <button class="tao" onclick="SignIn()"> Đăng Nhập</button>
             <button href="#" class="quen" onclick="showSupport()">Cần hỗ trợ? Nhấn vào đây</button>
+            <p id="message"> Hiện thông báo</p>
         </div>
         </div>
     </div>
     <script>
-        fetch('../JSON/web.json')
-            .then(response => response.json())
-            .then(Dangnhap => {
-                const name = Dangnhap.name;
-                const password = Dangnhap.pass;
-                console.log(name, password);
-            })
-            .catch(error => console.error('Lỗi khi đọc file JSON:', error));
-        function myFunction() {
-            const pass= document.getElementById("pass");
-            const email= document.getElementById("email");
-            if(pass.value==password && email.value== name) {
-                alert("Đăng nhập thành công");
-                window.location.href="./Sản Phẩm cuối khóa/index.html";
-            } else {
-                alert("Đăng nhập thất bại");
-            }
-        }
-        function SignIn() {
-            window.location.href="./Web.html";
-        }
-        function showSupport() {
-            window.location.href="https://www.facebook.com/muong.nhi.hai";
-        }
+   
     </script>
 </body>
 </html>
