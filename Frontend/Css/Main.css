@@ -42,11 +42,14 @@
     min-width: 20px;
 }
 .logo{
-    width: 5%;
+    width: 4%;
     height: 100%;
     font-weight: bold;
     color: #000000;
     margin-right: 10px;
+     background-image: url(https://fptshop.com.vn/tin-tuc/thu-thuat/avatar-trang-154450);
+    background-size: cover;
+    border-radius: 100%;
 }
 .nut:hover{
     background-color: #e8ecec;
