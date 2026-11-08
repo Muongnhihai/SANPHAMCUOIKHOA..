@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng tranh - Hehe Art</title>
+    <link rel="stylesheet" href="../Css/Upload.css">
+</head>
+<body>
+    <div class="upload-container">
+        <a href="./Profile.html" class="back-btn">← Quay lại</a>
+        <h1>🎨 Đăng tranh</h1>
+        <div class="upload-box">
+            <label for="artFile" class="choose-image">📁 Chọn ảnh từ máy</label>
+            <input type="file" id="artFile" accept="image/*" hidden>
+            <div id="previewContainer" class="preview-container">
+                <p>Ảnh bạn chọn sẽ xuất hiện ở đây</p>
+                <img id="imagePreview" src="" alt="Preview">
+            </div>
+            <textarea id="caption" placeholder="Bạn muốn nói gì về bức tranh này?"></textarea>
+            <button id="uploadBtn">🎨 Đăng tranh</button>
+            <p id="message"></p>
+        </div>
+    </div>
+    <script src="../Java/Upload.js"></script>
+</body>
+</html>
