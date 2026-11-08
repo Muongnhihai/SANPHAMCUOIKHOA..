@@ -4,8 +4,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
+const bcrypt = require("bcryptjs");
 require("dotenv").config();
-console.log("JWT_SECRET đã được nạp:", Boolean(process.env.JWT_SECRET));
+
 const cloudinary = require("./cloudinary");
 const User = require("./models/User");
 const Post = require("./models/Post");
@@ -38,6 +39,7 @@ function uploadToCloudinary(buffer) {
     });
 }
 
+// Kết nối MongoDB
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("✅ Đã kết nối MongoDB!"))
     .catch(error => console.error("❌ Lỗi kết nối MongoDB:", error));
@@ -57,6 +59,12 @@ app.post("/api/register", async (req, res) => {
             });
         }
 
+        if (password.length < 8) {
+            return res.status(400).json({
+                message: "Mật khẩu phải có ít nhất 8 ký tự!"
+            });
+        }
+
         const existingUser = await User.findOne({ username });
 
         if (existingUser) {
@@ -65,10 +73,20 @@ app.post("/api/register", async (req, res) => {
             });
         }
 
-        const newUser = new User({ username, password });
+        // Mã hóa mật khẩu trước khi lưu MongoDB
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const newUser = new User({
+            username,
+            password: hashedPassword
+        });
+
         await newUser.save();
 
-        res.status(201).json({ message: "Đăng ký thành công!" });
+        res.status(201).json({
+            message: "Đăng ký thành công!"
+        });
+
     } catch (error) {
         console.error("Lỗi đăng ký:", error);
         res.status(500).json({ message: "Lỗi server!" });
@@ -77,7 +95,6 @@ app.post("/api/register", async (req, res) => {
 
 // Đăng nhập
 app.post("/api/login", async (req, res) => {
-    console.log("🔥 ĐÃ NHẬN REQUEST LOGIN");
     try {
         const { username, password } = req.body;
 
@@ -91,13 +108,16 @@ app.post("/api/login", async (req, res) => {
 
         if (!user) {
             return res.status(401).json({
-                message: "Tài khoản không tồn tại!"
+                message: "Tài khoản hoặc mật khẩu không đúng!"
             });
         }
 
-        if (user.password !== password) {
+        // So sánh mật khẩu với mật khẩu đã mã hóa
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
             return res.status(401).json({
-                message: "Mật khẩu không đúng!"
+                message: "Tài khoản hoặc mật khẩu không đúng!"
             });
         }
 
@@ -115,6 +135,7 @@ app.post("/api/login", async (req, res) => {
                 username: user.username
             }
         });
+
     } catch (error) {
         console.error("Lỗi đăng nhập:", error);
         res.status(500).json({ message: "Lỗi server!" });
@@ -144,7 +165,7 @@ function authenticateToken(req, res, next) {
     }
 }
 
-// Đăng tranh lên Cloudinary, lưu thông tin vào MongoDB
+// Đăng tranh
 app.post("/api/posts", authenticateToken, upload.single("image"), async (req, res) => {
     let uploadedPublicId;
 
@@ -179,10 +200,10 @@ app.post("/api/posts", authenticateToken, upload.single("image"), async (req, re
             message: "Đăng tranh thành công!",
             post: newPost
         });
+
     } catch (error) {
         console.error("Lỗi upload:", error);
 
-        // Nếu lưu MongoDB thất bại, thử xóa ảnh vừa tải lên
         if (uploadedPublicId) {
             try {
                 await cloudinary.uploader.destroy(uploadedPublicId);
@@ -197,26 +218,25 @@ app.post("/api/posts", authenticateToken, upload.single("image"), async (req, re
     }
 });
 
-// Lấy tất cả bài đăng cho trang chủ
+// Lấy tất cả bài đăng
 app.get("/api/posts", async (req, res) => {
     try {
-        console.log("📥 Đang lấy danh sách tranh...");
-
         const posts = await Post.find()
             .populate("author", "username")
             .sort({ createdAt: -1 });
 
-        console.log("✅ Số bài đăng tìm được:", posts.length);
         res.json(posts);
-    } catch (err) {
-        console.error("❌ LỖI API /api/posts:", err);
+
+    } catch (error) {
+        console.error("Lỗi API /api/posts:", error);
 
         res.status(500).json({
             message: "Lỗi tải tranh",
-            error: err.message
+            error: error.message
         });
     }
 });
+
 // Lấy bài đăng của tài khoản hiện tại
 app.get("/api/my-posts", authenticateToken, async (req, res) => {
     try {
@@ -225,13 +245,16 @@ app.get("/api/my-posts", authenticateToken, async (req, res) => {
             .sort({ createdAt: -1 });
 
         res.json(posts);
+
     } catch (error) {
         console.error("Lỗi lấy bài đăng cá nhân:", error);
-        res.status(500).json({ message: "Lỗi tải bài đăng cá nhân!" });
+        res.status(500).json({
+            message: "Lỗi tải bài đăng cá nhân!"
+        });
     }
 });
 
-// Báo lỗi upload rõ ràng hơn
+// Xử lý lỗi upload
 app.use((error, req, res, next) => {
     if (error instanceof multer.MulterError) {
         return res.status(400).json({
@@ -242,7 +265,9 @@ app.use((error, req, res, next) => {
     }
 
     if (error.message?.startsWith("Chỉ chấp nhận ảnh")) {
-        return res.status(400).json({ message: error.message });
+        return res.status(400).json({
+            message: error.message
+        });
     }
 
     console.error(error);
@@ -251,7 +276,6 @@ app.use((error, req, res, next) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
 });
-
